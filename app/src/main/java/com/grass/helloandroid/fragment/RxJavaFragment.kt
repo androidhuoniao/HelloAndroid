@@ -10,7 +10,7 @@ import com.grass.helloandroid.views.previewItemView
  * on 2020/7/10
  * Email: grassswwang@tencent.com
  */
-class OtherSampleFragment : BaseEpoxyFragment() {
+class RxJavaFragment : BaseEpoxyFragment() {
 
     override fun EpoxyController.buildModels() {
         marquee {

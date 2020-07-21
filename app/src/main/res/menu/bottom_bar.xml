@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/showcase"
-        android:title="Normal"
-        app:showAsAction="always|withText"/>
 
     <item
-        android:id="@+id/push"
-        android:title="push"
-        app:showAsAction="always|withText"/>
+        android:id="@+id/notification"
+        android:title="Notification"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/rxjava"
+        android:title="rxjava"
+        app:showAsAction="always|withText" />
+
 
 </menu>

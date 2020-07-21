@@ -5,7 +5,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.grass.helloandroid.fragment.KeepAliveSampleFragment
+import com.grass.helloandroid.fragment.NotificationFragment
+import com.grass.helloandroid.fragment.RxJavaFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -13,15 +14,15 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottomNavigation.setOnNavigationItemSelectedListener(this)
-        savedInstanceState ?: showFragment(KeepAliveSampleFragment())
+        savedInstanceState ?: showFragment(NotificationFragment())
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            R.id.keepalive -> showFragment(KeepAliveSampleFragment())
-//            R.id.other -> showFragment(OtherSampleFragment())
-//            else -> return false
-//        }
+        when (item.itemId) {
+            R.id.rxjava -> showFragment(RxJavaFragment())
+            R.id.notification -> showFragment(NotificationFragment())
+            else -> return false
+        }
         return true
     }
 

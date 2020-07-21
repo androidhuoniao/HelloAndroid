@@ -11,7 +11,7 @@ import com.grass.helloandroid.views.previewItemView
  * on 2020/7/10
  * Email: grassswwang@tencent.com
  */
-class KeepAliveSampleFragment : BaseEpoxyFragment() {
+class NotificationFragment : BaseEpoxyFragment() {
 
     override fun EpoxyController.buildModels() {
         marquee {
