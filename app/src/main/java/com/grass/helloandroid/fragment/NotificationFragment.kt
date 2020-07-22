@@ -15,10 +15,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.airbnb.epoxy.EpoxyController
 import com.grass.helloandroid.SecondActivity
-import com.grass.helloandroid.notification.BigPictureStyleNotification
-import com.grass.helloandroid.notification.BigTextStyleNotification
-import com.grass.helloandroid.notification.InBoxStyleNotification
-import com.grass.helloandroid.notification.MessageingStyleNotification
+import com.grass.helloandroid.notification.*
 import com.grass.helloandroid.views.marquee
 import com.grass.helloandroid.views.previewItemView
 
@@ -30,7 +27,6 @@ import com.grass.helloandroid.views.previewItemView
  * Email: grassswwang@tencent.com
  */
 class NotificationFragment : BaseEpoxyFragment() {
-    var CALENDAR_ID: String? = "channel_01"
 
     override fun EpoxyController.buildModels() {
         marquee {
@@ -74,18 +70,21 @@ class NotificationFragment : BaseEpoxyFragment() {
             id("lockscreen")
             title("lockscreen")
             clickListener { _ ->
+                LockScreenNotification.showNotification(activity!!)
             }
         }
         previewItemView {
             id("headsup")
             title("headsup")
             clickListener { _ ->
+                HeadsupNotification.showNotification(activity!!)
             }
         }
         previewItemView {
             id("mediacontroller")
             title("mediacontroller")
             clickListener { _ ->
+                MediaStyleNotification.showNotification(activity!!)
             }
         }
     }

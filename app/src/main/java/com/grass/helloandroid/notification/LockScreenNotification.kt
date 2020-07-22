@@ -13,7 +13,7 @@ import com.grass.helloandroid.R
  * on 2020/7/22
  * Email: grassswwang@tencent.com
  */
-object BigPictureStyleNotification {
+object LockScreenNotification {
 
     fun showNotification(context: Context) {
         var notification = NotificationCompat.Builder(context, NotificationChannelFactory.CHANNELID)
