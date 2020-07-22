@@ -19,8 +19,8 @@ object LockScreenNotification {
         var notification = NotificationCompat.Builder(context, NotificationChannelFactory.CHANNELID)
             .apply {
                 setSmallIcon(R.mipmap.ic_launcher)
-                setContentTitle("contentTitle:bigPictureSytleNotification")
-                setContentText("contextText:bigPictureStylebigPictureStylebigPictureStylebigPictureStylebigPictureStyle")
+                setContentTitle("contentTitle:LockScreen")
+                setContentText("contextText:LockScreen")
                 setStyle(
                     NotificationCompat.BigPictureStyle()
                         .setSummaryText("summeryText")

@@ -19,7 +19,7 @@ object NotificationChannelFactory {
     @RequiresApi(Build.VERSION_CODES.O)
     fun makeNotificationChannel(): NotificationChannel {
         val notificationChannel = NotificationChannel(
-            CHANNELID, "123",
+            CHANNELID, "channelname：123",
             NotificationManager.IMPORTANCE_DEFAULT
         )
         // 既可以使用apply，也可以使用with
