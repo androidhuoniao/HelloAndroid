@@ -10,12 +10,12 @@ import com.grass.helloandroid.views.previewItemView
  * on 2020/7/10
  * Email: grassswwang@tencent.com
  */
-class RxJavaFragment : BaseEpoxyFragment() {
+class KotlinFragment : BaseEpoxyFragment() {
 
     override fun EpoxyController.buildModels() {
         marquee {
-            id("RxJava2")
-            title("RxJava2")
+            id("kotlin")
+            title("kotlin")
         }
 
         previewItemView {

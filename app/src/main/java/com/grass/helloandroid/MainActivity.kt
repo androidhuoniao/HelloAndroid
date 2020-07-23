@@ -5,6 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.grass.helloandroid.fragment.KotlinFragment
 import com.grass.helloandroid.fragment.NotificationFragment
 import com.grass.helloandroid.fragment.RxJavaFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         when (item.itemId) {
             R.id.rxjava -> showFragment(RxJavaFragment())
             R.id.notification -> showFragment(NotificationFragment())
+            R.id.kotlin -> showFragment(KotlinFragment())
             else -> return false
         }
         return true

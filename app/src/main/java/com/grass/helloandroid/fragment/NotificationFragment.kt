@@ -35,6 +35,13 @@ class NotificationFragment : BaseEpoxyFragment() {
         }
 
         previewItemView {
+            id("normalNotification")
+            title("normalNotification")
+            clickListener { _ ->
+                NormalNotification.showNotification(activity!!)
+            }
+        }
+        previewItemView {
             id("bigtextstyle")
             title("BigTextStyle")
             clickListener { _ ->
