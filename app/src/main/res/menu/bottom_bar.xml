@@ -12,9 +12,14 @@
         android:title="rxjava"
         app:showAsAction="always|withText" />
 
+<!--    <item-->
+<!--        android:id="@+id/kotlin"-->
+<!--        android:title="kotlin"-->
+<!--        app:showAsAction="always|withText" />-->
+
     <item
-        android:id="@+id/kotlin"
-        android:title="kotlin"
+        android:id="@+id/androiddemo"
+        android:title="android"
         app:showAsAction="always|withText" />
 
 
