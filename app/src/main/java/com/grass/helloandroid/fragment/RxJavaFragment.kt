@@ -24,13 +24,7 @@ class RxJavaFragment : BaseEpoxyFragment() {
             id("groupBy")
             title("groupBy")
             clickListener { _ ->
-                startSecond()
             }
         }
-    }
-
-    private fun startSecond() {
-        var intent: Intent = Intent(activity, SecondActivity::class.java)
-        activity!!.startActivity(intent)
     }
 }

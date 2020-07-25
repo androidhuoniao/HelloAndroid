@@ -17,6 +17,7 @@ fun ViewGroup.inflate(@LayoutRes layout: Int, attachToRoot: Boolean = true): Vie
     LayoutInflater.from(context).inflate(layout, this, attachToRoot)
 
 fun View.getText(@StringRes res: Int) = this.resources.getText(res)
+
 fun View.setVisibleIf(condition: Boolean) {
     visibility = if (condition) View.VISIBLE else View.GONE
 }

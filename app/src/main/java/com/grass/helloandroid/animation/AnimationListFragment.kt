@@ -1,6 +1,8 @@
 package com.grass.helloandroid.animation
 
+import android.content.Intent
 import com.airbnb.epoxy.EpoxyController
+import com.grass.helloandroid.SecondActivity
 import com.grass.helloandroid.fragment.BaseEpoxyFragment
 import com.grass.helloandroid.views.marquee
 import com.grass.helloandroid.views.previewItemView
@@ -22,8 +24,14 @@ class AnimationListFragment : BaseEpoxyFragment() {
             id("rotate")
             title("rotate")
             clickListener { _ ->
-
+                startSecond()
             }
         }
+    }
+
+
+    private fun startSecond() {
+        var intent: Intent = Intent(activity, SecondActivity::class.java)
+        activity!!.startActivity(intent)
     }
 }
