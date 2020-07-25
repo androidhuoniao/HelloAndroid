@@ -3,6 +3,7 @@ package com.grass.helloandroid.fragment
 import android.content.Intent
 import com.airbnb.epoxy.EpoxyController
 import com.grass.helloandroid.SecondActivity
+import com.grass.helloandroid.animation.AnimationActivity
 import com.grass.helloandroid.span.SpanActivity
 import com.grass.helloandroid.views.marquee
 import com.grass.helloandroid.views.previewItemView
@@ -26,6 +27,15 @@ class AndroidFragment : BaseEpoxyFragment() {
             title("span")
             clickListener { _ ->
                 var intent: Intent = Intent(activity, SpanActivity::class.java)
+                activity!!.startActivity(intent)
+            }
+        }
+
+        previewItemView {
+            id("animation")
+            title("animation")
+            clickListener { _ ->
+                var intent = Intent(activity, AnimationActivity::class.java)
                 activity!!.startActivity(intent)
             }
         }
