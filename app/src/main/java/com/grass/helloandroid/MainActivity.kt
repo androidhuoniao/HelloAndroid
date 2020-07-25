@@ -11,7 +11,8 @@ import com.grass.helloandroid.fragment.NotificationFragment
 import com.grass.helloandroid.fragment.RxJavaFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
+    IFragmentSwitcher {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,5 +34,19 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     fun showFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.content, fragment)
             .commit()
+    }
+
+
+    override fun showFragment(action: Int, fragment: Fragment) {
+        when (action) {
+            FragmentActionConsts.ACTION_ADD -> {
+                supportFragmentManager.beginTransaction().add(R.id.content, fragment)
+                    .commit()
+            }
+            FragmentActionConsts.ACTION_REPLACE -> {
+                supportFragmentManager.beginTransaction().replace(R.id.content, fragment)
+                    .commit()
+            }
+        }
     }
 }
