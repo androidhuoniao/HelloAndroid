@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         when (item.itemId) {
             R.id.rxjava -> showFragment(RxJavaFragment())
             R.id.notification -> showFragment(NotificationFragment())
-//            R.id.kotlin -> showFragment(KotlinFragment())
+            R.id.kotlin -> showFragment(KotlinFragment())
             R.id.androiddemo -> showFragment(AndroidFragment())
             else -> return false
         }
