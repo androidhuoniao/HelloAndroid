@@ -18,7 +18,6 @@
         </activity>
         <activity android:name=".SecondActivity" />
         <activity android:name=".span.SpanActivity" />
-        <activity android:name=".animation.AnimationActivity" />
     </application>
 
 </manifest>

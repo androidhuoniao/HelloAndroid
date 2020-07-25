@@ -3,8 +3,6 @@ package com.grass.helloandroid.fragment
 import android.content.Intent
 import com.airbnb.epoxy.EpoxyController
 import com.grass.helloandroid.FragmentActionConsts
-import com.grass.helloandroid.SecondActivity
-import com.grass.helloandroid.animation.AnimationActivity
 import com.grass.helloandroid.animation.AnimationListFragment
 import com.grass.helloandroid.span.SpanActivity
 import com.grass.helloandroid.views.marquee
