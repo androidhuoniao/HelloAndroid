@@ -18,4 +18,5 @@ class KbApplication : Application() {
         super.onCreate()
         application = this
     }
+
 }

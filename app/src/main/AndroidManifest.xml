@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.grass.helloandroid">
 
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icon_app"
@@ -18,6 +23,44 @@
         </activity>
         <activity android:name=".SecondActivity" />
         <activity android:name=".span.SpanActivity" />
+
+
+        <!-- account sync keeplive-->
+        <provider
+            android:name=".accountsync.AccountProvider"
+            android:authorities="com.grass.helloandroid.account"
+            android:exported="true"
+            android:process=":PushService" />
+
+        <service
+            android:name=".accountsync.AccountAuthService"
+            android:process=":PushService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+            <!-- This points to an XMLf ile which describes our account service. -->
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
+        <service
+            android:name=".accountsync.SyncService"
+            android:exported="true"
+            android:process=":PushService">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+
+            <meta-data
+                android:name="android.provider.CONTACTS_STRUCTURE"
+                android:resource="@xml/contacts" />
+        </service>
+        <!-- account sync keeplive end-->
     </application>
 
 </manifest>

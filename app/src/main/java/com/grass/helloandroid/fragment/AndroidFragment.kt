@@ -3,6 +3,7 @@ package com.grass.helloandroid.fragment
 import android.content.Intent
 import com.airbnb.epoxy.EpoxyController
 import com.grass.helloandroid.FragmentActionConsts
+import com.grass.helloandroid.accountsync.AccountCreator
 import com.grass.helloandroid.animation.AnimationListFragment
 import com.grass.helloandroid.span.SpanActivity
 import com.grass.helloandroid.views.marquee
@@ -36,6 +37,14 @@ class AndroidFragment : BaseEpoxyFragment() {
             title("animation")
             clickListener { _ ->
                 getFragmentSwitcher().showFragment(FragmentActionConsts.ACTION_ADD, AnimationListFragment())
+            }
+        }
+
+        previewItemView {
+            id("account_sync")
+            title("account sync 保活")
+            clickListener { _ ->
+                AccountCreator.createSyncAccount(activity!!)
             }
         }
     }
