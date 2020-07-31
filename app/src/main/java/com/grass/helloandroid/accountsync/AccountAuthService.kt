@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.IBinder
-import com.grass.helloandroid.KbApplication
+import android.util.Log
 import com.grass.helloandroid.accountsync.AccountCreator.ACCOUNT_NAME
 import com.grass.helloandroid.accountsync.AccountCreator.ACCOUNT_TYPE
 
@@ -32,9 +32,11 @@ class AccountAuthService : Service() {
     class AccountAuthenticator(context: Context) : AbstractAccountAuthenticator(context) {
 
         var myContext: Context
+
         init {
-           myContext = context
+            myContext = context
         }
+
         override fun editProperties(
             accountAuthenticatorResponse: AccountAuthenticatorResponse?,
             s: String?
@@ -50,6 +52,7 @@ class AccountAuthService : Service() {
             strings: Array<String?>?,
             bundle: Bundle?
         ): Bundle? {
+            Log.i(AccountTag.TAG, "addAccount:  ")
             AccountCreator.createSyncAccount(myContext) //创建帐户
             val b = Bundle()
             b.putString(AccountManager.KEY_ACCOUNT_NAME, ACCOUNT_NAME)

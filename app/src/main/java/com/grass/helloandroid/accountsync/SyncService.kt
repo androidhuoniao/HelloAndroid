@@ -47,7 +47,7 @@ class SyncService : Service() {
             account: Account, extras: Bundle, authority: String,
             provider: ContentProviderClient, syncResult: SyncResult
         ) {
-            Log.i("", "SyncAdapter.onPerformSync: ")
+            Log.i(AccountTag.TAG, "SyncAdapter.onPerformSync: ")
         }
     }
 }

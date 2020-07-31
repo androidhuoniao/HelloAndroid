@@ -5,6 +5,7 @@ import android.accounts.AccountManager
 import android.content.ContentResolver
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 
 /**
  *
@@ -23,7 +24,8 @@ object AccountCreator {
         val accountManager =
             context.getSystemService(Context.ACCOUNT_SERVICE) as AccountManager
         var account = Account(ACCOUNT_NAME, ACCOUNT_TYPE)
-        var result = accountManager.addAccountExplicitly(account, "", null)
+        var result = accountManager.addAccountExplicitly(account, null, null)
+        Log.i(AccountTag.TAG, "createSyncAccount: result: " + result)
         if (result) {
             ContentResolver.setIsSyncable(account, CONTENT_AUTHORITY, 1)
             ContentResolver.setSyncAutomatically(account, CONTENT_AUTHORITY, true)
