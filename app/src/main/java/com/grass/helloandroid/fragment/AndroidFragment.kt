@@ -8,6 +8,9 @@ import com.grass.helloandroid.animation.AnimationListFragment
 import com.grass.helloandroid.span.SpanActivity
 import com.grass.helloandroid.views.marquee
 import com.grass.helloandroid.views.previewItemView
+import com.grass.helloandroid.webview.WebviewActivity
+import java.lang.Exception
+import kotlin.reflect.KClass
 
 /**
  *
@@ -36,7 +39,10 @@ class AndroidFragment : BaseEpoxyFragment() {
             id("animation")
             title("animation")
             clickListener { _ ->
-                getFragmentSwitcher().showFragment(FragmentActionConsts.ACTION_ADD, AnimationListFragment())
+                getFragmentSwitcher().showFragment(
+                    FragmentActionConsts.ACTION_ADD,
+                    AnimationListFragment()
+                )
             }
         }
 
@@ -47,5 +53,20 @@ class AndroidFragment : BaseEpoxyFragment() {
                 AccountCreator.createSyncAccount(activity!!)
             }
         }
+
+        previewItemView {
+            id("load_local_html")
+            title("加载本地url")
+            clickListener { _ ->
+//                var intent: Intent = Intent(activity, WebviewActivity::class.java)
+//                activity!!.startActivity(intent)
+                startNextActivity(WebviewActivity::class)
+            }
+        }
+    }
+
+    fun <T : Any> startNextActivity(clazz: KClass<T>) {
+        var intent: Intent = Intent(activity, clazz.java)
+        activity!!.startActivity(intent)
     }
 }

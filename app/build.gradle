@@ -23,6 +23,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "buildType"
+    productFlavors {
+        // 标准构建
+        standard_ {
+            dimension "buildType"
+        }
+
+        demo {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // If you are using only one dimension, this property is optional,
+            // and the plugin automatically assigns all the module's flavors to
+            // that dimension.
+            dimension "buildType"
+        }
+//        full {
+//            dimension "version"
+//            applicationIdSuffix ".full"
+//            versionNameSuffix "-full"
+//        }
+    }
 }
 
 dependencies {
