@@ -103,13 +103,21 @@ object TaskLogger {
     }
 
     fun logCompileResourceTask(task: Task) {
-        LogUtil.log("-------------------------logCompileResourceTask---------------------------")
+        LogUtil.log("-------------------------logCompileResourceTask $task---------------------------")
+
+        task.inputs.sourceFiles.forEach {
+            LogUtil.log("logCompileResourceTask:sourceFiles-${it.path} ")
+        }
         task.inputs.files.forEach {
-           LogUtil.log("logCompileResourceTask:inputs-$task ${it.path} ")
+           LogUtil.log("logCompileResourceTask:inputs- ${it.path} ")
+        }
+
+        task.inputs.properties.forEach {
+            LogUtil.log("logCompileResourceTask:properties- ${it} ")
         }
 
         task.outputs.files.forEach {
-            LogUtil.log("logCompileResourceTask:outPuts-$task ${it.path} ")
+            LogUtil.log("logCompileResourceTask:outPuts- ${it.path} ")
         }
         LogUtil.log("-------------------------logCompileResourceTask end---------------------------")
     }

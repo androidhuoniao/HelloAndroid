@@ -86,9 +86,9 @@ class ImagePlugin : Plugin<Project> {
                     val mcPicTask = createPicTask(project, variant)
                     //inject task
                     (project.tasks.findByName(mcPicTask.name) as Task).dependsOn(
-                        mergeResourcesTask.taskDependencies.getDependencies(
-                            mergeResourcesTask
-                        )
+//                        mergeResourcesTask.taskDependencies.getDependencies(
+//                            mergeResourcesTask
+//                        )
                     )
                     mergeResourcesTask.dependsOn(project.tasks.findByName(mcPicTask.name))
                 }
@@ -100,9 +100,9 @@ class ImagePlugin : Plugin<Project> {
                         TaskLogger.logCompileResourceTask(compileTask)
                         var libraryPicTask =
                             createLibraryPicTask(project, variant, compileTask.inputs)
-                        (libraryPicTask).dependsOn(
-                            compileTask.taskDependencies.getDependencies(compileTask)
-                        )
+//                        (libraryPicTask).dependsOn(
+//                            compileTask.taskDependencies.getDependencies(compileTask)
+//                        )
                         compileTask.dependsOn(libraryPicTask)
                     }
                 }
