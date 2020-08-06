@@ -1,8 +1,8 @@
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'McImage'
-
 McImageConfig {
     isCheckSize false //是否检测图片大小，默认为true
     optimizeType "ConvertWebp" //优化类型，可选"ConvertWebp"，"Compress"，转换为webp或原图压缩，默认Compress，使用ConvertWep需要min sdk >= 18.但是压缩效果更好
