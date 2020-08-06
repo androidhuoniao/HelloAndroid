@@ -41,8 +41,7 @@ uploadArchives {
             pom.groupId = GROUP
             pom.artifactId = ARTIFACT
             pom.version = VERSION
-            println("mavenlocal: "+mavenLocal().getUrl()+" name: "+mavenLocal().getName())
-            repository(url: "file:///Users/grass/.m2/repository/")
+            repository(url: mavenLocal().getUrl())
         }
     }
 }
