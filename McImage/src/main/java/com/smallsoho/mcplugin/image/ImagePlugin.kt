@@ -74,25 +74,24 @@ class ImagePlugin : Plugin<Project> {
         }
 
         project.afterEvaluate {
-            LogUtil.log("${prefix}afterEvaluate is working")
+            LogUtil.log("${prefix}afterEvaluate is working rootDir: "+project.rootDir)
 //            TaskLogger.logAllTasks(project)
             variants.all { variant ->
                 variant as BaseVariantImpl
                 LogUtil.log("${prefix}afterEvaluate variant: ${variant.name}")
 //                TaskLogger.logInputs(project.name, proj = project)
                 TaskLogger.logOutputs(project.name, proj = project)
-                val mergeResourcesTask = variant.mergeResourcesProvider.get()
-
-                val mcPicTask = createPicTask(project, variant)
-
-                //inject task
-                (project.tasks.findByName(mcPicTask.name) as Task).dependsOn(
-                    mergeResourcesTask.taskDependencies.getDependencies(
-                        mergeResourcesTask
+                if (isAppModule) {
+                    val mergeResourcesTask = variant.mergeResourcesProvider.get()
+                    val mcPicTask = createPicTask(project, variant)
+                    //inject task
+                    (project.tasks.findByName(mcPicTask.name) as Task).dependsOn(
+                        mergeResourcesTask.taskDependencies.getDependencies(
+                            mergeResourcesTask
+                        )
                     )
-                )
-                mergeResourcesTask.dependsOn(project.tasks.findByName(mcPicTask.name))
-
+                    mergeResourcesTask.dependsOn(project.tasks.findByName(mcPicTask.name))
+                }
 
                 if (!isAppModule) {
                     var compileTask = project.tasks.findByName("compileDebugLibraryResources")
@@ -117,6 +116,7 @@ class ImagePlugin : Plugin<Project> {
 
         mcPicTask.doLast {
             LogUtil.log(" ${project.name}---- mcPicTask.doLast")
+            TaskLogger.logAllProjects(project)
             //debug enable
             if (isDebugTask && !mcImageConfig.enableWhenDebug) {
                 LogUtil.log("Debug not run ^_^")
@@ -132,8 +132,11 @@ class ImagePlugin : Plugin<Project> {
             LogUtil.log("---- McImage Plugin Start ----")
             LogUtil.log(mcImageConfig.toString())
 
-            val dir = variant.allRawAndroidResources.files
-            LogUtil.log("${prefix} mcPicTask.doLast: " + dir)
+            val dir = variant.allRawAndroidResources.files.filter { file ->
+               !file.path.endsWith("/build/intermediates/packaged_res/debug")
+            }.toList()
+
+            LogUtil.log("${prefix} mcPicTask.doLast: resource files------\n" + dir)
             val cacheList = ArrayList<String>()
 
             val imageFileList = ArrayList<File>()

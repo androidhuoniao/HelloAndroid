@@ -28,6 +28,15 @@ object TaskLogger {
         }
     }
 
+    fun logAllProjects( proj: Project) {
+
+        LogUtil.log("----------logAllProjects begin--------------")
+        proj.allprojects {
+           LogUtil.log("logAllProjects: ${it.name}")
+        }
+        LogUtil.log("----------logAllProjects end--------------")
+    }
+
     fun logOutputs(tag: String, proj: Project) {
         proj.tasks.forEach { task ->
             task.doLast {
