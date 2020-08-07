@@ -117,6 +117,7 @@ class ImagePlugin : Plugin<Project> {
         mcPicTask.doLast {
             LogUtil.log(" ${project.name}---- mcPicTask.doLast")
             TaskLogger.logAllProjects(project)
+            LogUtil.log("${prefix} mcPicTask.doLast --------inputfiles------", it.inputs.files.files)
             //debug enable
             if (isDebugTask && !mcImageConfig.enableWhenDebug) {
                 LogUtil.log("Debug not run ^_^")
@@ -136,7 +137,9 @@ class ImagePlugin : Plugin<Project> {
                !file.path.endsWith("/build/intermediates/packaged_res/debug")
             }.toList()
 
-            LogUtil.log("${prefix} mcPicTask.doLast: resource files------\n" + dir)
+//            LogUtil.log("${prefix} mcPicTask.doLast: resource files------\n" + dir)
+            LogUtil.log("${prefix} mcPicTask.doLast allRawAndroidResources-----", variant.allRawAndroidResources.files.toList())
+
             val cacheList = ArrayList<String>()
 
             val imageFileList = ArrayList<File>()
@@ -165,6 +168,8 @@ class ImagePlugin : Plugin<Project> {
         if (inputs == null) {
             return libPicTask
         }
+        val dir = inputs.files
+        LogUtil.log("${prefix} libPicTask.doLast: inputs files:" ,dir.files)
         libPicTask.doLast {
             LogUtil.log(" ${project.name}----libPicTask.doLast")
             //debug enable
@@ -179,8 +184,6 @@ class ImagePlugin : Plugin<Project> {
                 return@doLast
             }
 
-            val dir = inputs.files
-            LogUtil.log("${prefix} libPicTask.doLast: " + dir)
             val cacheList = ArrayList<String>()
 
             val imageFileList = ArrayList<File>()

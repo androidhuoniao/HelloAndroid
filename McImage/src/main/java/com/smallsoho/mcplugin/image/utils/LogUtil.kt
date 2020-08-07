@@ -1,5 +1,7 @@
 package com.smallsoho.mcplugin.image.utils
 
+import java.io.File
+
 class LogUtil {
 
     companion object {
@@ -20,9 +22,13 @@ class LogUtil {
             println(exception)
         }
 
-
-
+        fun log(tag: String, files: Collection<File>) {
+            log("---------------$tag---------------")
+            files.forEach {
+                LogUtil.log("   "+it.path)
+            }
+            log("---------------$tag end---------------")
+        }
     }
-
 
 }
