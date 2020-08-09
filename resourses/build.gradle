@@ -15,7 +15,7 @@ McImageConfig {
                   "icon_launcher.png"
     ]
     mctoolsDir "$rootDir"
-    isSupportAlphaWebp false  //是否支持带有透明度的webp，default false,带有透明图的图片会进行压缩
+    isSupportAlphaWebp true  //是否支持带有透明度的webp，default false,带有透明图的图片会进行压缩
     multiThread true  //是否开启多线程处理图片，default true
     bigImageWhiteList = [] //默认为空，如果添加，大图检测将跳过这些图片
 }
