@@ -1,3 +1,4 @@
+include ':ResCompressor'
 include ':resourses'
 include ':app',":McImage"
 rootProject.name = "HelloAndroid"
