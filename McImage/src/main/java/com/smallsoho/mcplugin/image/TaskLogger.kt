@@ -81,26 +81,26 @@ object TaskLogger {
 
     }
 
-    fun logMergeResourceTask(task: MergeResources) {
+    fun logMergeDebugResourceTask(task: MergeResources) {
+        LogUtil.log("-------------------------logMergeDebugResourceTask $task---------------------------")
 
-        task.doLast {
-
-//                    var outputDir = mergeResources.outputDir
-//                    var generatedPngsOutputDir = mergeResources.generatedPngsOutputDir
-//                    var publicFile = mergeResources.publicFile
-//                    var resourceDirsOutsideRootProjectDir =
-//                        mergeResources.resourceDirsOutsideRootProjectDir
-            var generatedDensities = task.generatedDensities
-            LogUtil.log("mergeResources generatedDensities: $generatedDensities \n outputDir: ${task.outputDir}")
+        task.inputs.sourceFiles.forEach {
+            LogUtil.log("logMergeDebugResourceTask:sourceFiles-${it.path} ")
+        }
+        task.inputs.files.forEach {
+            LogUtil.log("logMergeDebugResourceTask:inputs- ${it.path} ")
         }
 
-    }
-
-    fun logPackageResourceTask(task: Task) {
-        task.doLast {
+        task.inputs.properties.forEach {
+            LogUtil.log("logMergeDebugResourceTask:properties- ${it} ")
         }
 
+        task.outputs.files.forEach {
+            LogUtil.log("logMergeDebugResourceTask:outPuts- ${it.path} ")
+        }
+        LogUtil.log("-------------------------logMergeDebugResourceTask end---------------------------")
     }
+
 
     fun logCompileResourceTask(task: Task) {
         LogUtil.log("-------------------------logCompileResourceTask $task---------------------------")

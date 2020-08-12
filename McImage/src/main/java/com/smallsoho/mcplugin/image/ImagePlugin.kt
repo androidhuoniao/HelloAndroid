@@ -83,6 +83,7 @@ class ImagePlugin : Plugin<Project> {
                 TaskLogger.logOutputs(project.name, proj = project)
                 if (isAppModule) {
                     val mergeResourcesTask = variant.mergeResourcesProvider.get()
+                    TaskLogger.logMergeDebugResourceTask(mergeResourcesTask)
                     val mcPicTask = createPicTask(project, variant)
                     //inject task
                     (project.tasks.findByName(mcPicTask.name) as Task).dependsOn(
