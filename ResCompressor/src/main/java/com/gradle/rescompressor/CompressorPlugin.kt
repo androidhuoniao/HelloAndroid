@@ -17,7 +17,7 @@ import org.gradle.api.Project
 class CompressorPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
-        println(" ${project.name} ${this.javaClass.simpleName}.apply() is working")
+        println("${project.name} ${this.javaClass.simpleName}.apply() is working")
         when {
             project.plugins.hasPlugin("com.android.application") -> project.getAndroid<AppExtension>()
                 .let { android ->

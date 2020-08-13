@@ -30,6 +30,7 @@ class CwebpCompressionVariantProcessor {
                 LogUtil.log("serarch: "+search.size)
                 search
             }, variant.mergeResourcesTask)?.doLast {
+                LogUtil.log("CompressionTask.doLast is working")
             results.generateReport(variant, Build.ARTIFACT)
         }
     }

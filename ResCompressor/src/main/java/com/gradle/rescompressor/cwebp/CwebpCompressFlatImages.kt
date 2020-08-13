@@ -37,8 +37,11 @@ internal open class CwebpCompressFlatImages : AbstractCwebpCompressImages() {
 
     override fun compress(filter: (File) -> Boolean) {
         LogUtil.log("CwebpCompressFlatImages.compress is working")
+        val indent= "   "
         val cwebp = this.compressor.canonicalPath
         val aapt2 = variant.scope.buildTools.getPath(BuildToolInfo.PathId.AAPT2)
+        LogUtil.log("$indent cwebp: $cwebp")
+        LogUtil.log("$indent aapt2: $aapt2")
         val parser = SAXParserFactory.newInstance().newSAXParser()
         val icons = variant.scope.mergedManifests.search {
             it.name == SdkConstants.ANDROID_MANIFEST_XML
@@ -51,6 +54,7 @@ internal open class CwebpCompressFlatImages : AbstractCwebpCompressImages() {
             it.parallelStream()
         }.collect(Collectors.toSet())
 
+        LogUtil.log("$indent icons: $icons")
         // Google Play only accept APK with PNG format launcher icon
         // https://developer.android.com/topic/performance/reduce-apk-size#use-webp
         val isNotLauncherIcon: (File, Aapt2Container.Metadata) -> Boolean = { input, metadata ->
@@ -60,6 +64,7 @@ internal open class CwebpCompressFlatImages : AbstractCwebpCompressImages() {
             }
         }
 
+        LogUtil.log("$indent images: ${images.size}")
         images.parallelStream().map {
             it to it.metadata
         }.filter {
@@ -78,6 +83,7 @@ internal open class CwebpCompressFlatImages : AbstractCwebpCompressImages() {
                 spec.isIgnoreExitValue = true
                 spec.commandLine = it.cmdline
             }
+            LogUtil.log("result: ${rc.exitValue} path: "+it.input.path)
             when (rc.exitValue) {
                 0 -> {
                     val s1 = it.output.length()
