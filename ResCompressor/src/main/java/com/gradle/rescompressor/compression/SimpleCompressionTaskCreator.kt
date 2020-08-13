@@ -33,6 +33,7 @@ class SimpleCompressionTaskCreator(private val tool: CompressionTool, private va
             task.supplier = {
                 supplier.invoke().filter { it.length() > 0 }.sortedBy { it }
             }
+            task.inputs.property("time",System.currentTimeMillis())
         }.apply {
             dependsOn(install, deps)
             LogUtil.log("createCompressionTask dependsOn ")

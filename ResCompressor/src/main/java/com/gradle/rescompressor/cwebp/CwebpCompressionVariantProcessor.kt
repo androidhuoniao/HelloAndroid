@@ -27,7 +27,7 @@ class CwebpCompressionVariantProcessor {
         Cwebp.get(variant)?.newCompressionTaskCreator()
             ?.createCompressionTask(variant, results, "resources", {
                 var search = variant.scope.mergedRes.search(filter)
-                LogUtil.log("serarch: "+search.size)
+                LogUtil.log("variant.scope.mergedRes: "+search.size)
                 search
             }, variant.mergeResourcesTask)?.doLast {
                 LogUtil.log("CompressionTask.doLast is working")
