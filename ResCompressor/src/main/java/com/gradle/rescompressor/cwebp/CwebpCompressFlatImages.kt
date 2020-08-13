@@ -16,6 +16,7 @@ import com.gradle.rescompressor.kotlinx.CSI_RED
 import com.gradle.rescompressor.kotlinx.CSI_RESET
 import com.gradle.rescompressor.kotlinx.file
 import com.gradle.rescompressor.kotlinx.search
+import com.gradle.rescompressor.utils.LogUtil
 import org.gradle.api.tasks.CacheableTask
 import org.gradle.api.tasks.OutputDirectory
 import java.io.File
@@ -35,6 +36,7 @@ internal open class CwebpCompressFlatImages : AbstractCwebpCompressImages() {
         get() = variant.project.buildDir.file(FD_INTERMEDIATES).file("compressed_${FD_RES}_cwebp", variant.dirName, this.name)
 
     override fun compress(filter: (File) -> Boolean) {
+        LogUtil.log("CwebpCompressFlatImages.compress is working")
         val cwebp = this.compressor.canonicalPath
         val aapt2 = variant.scope.buildTools.getPath(BuildToolInfo.PathId.AAPT2)
         val parser = SAXParserFactory.newInstance().newSAXParser()

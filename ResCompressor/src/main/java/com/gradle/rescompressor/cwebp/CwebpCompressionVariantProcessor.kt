@@ -12,18 +12,24 @@ import com.gradle.rescompressor.gradle.mergedRes
 import com.gradle.rescompressor.gradle.project
 import com.gradle.rescompressor.gradle.scope
 import com.gradle.rescompressor.kotlinx.search
+import com.gradle.rescompressor.utils.LogUtil
 
 /**
  * @author johnsonlee
  */
-class CwebpCompressionVariantProcessor  {
+class CwebpCompressionVariantProcessor {
 
-     fun process(variant: BaseVariant) {
+    fun process(variant: BaseVariant) {
+        LogUtil.log("${variant.project.name} ${variant.name} process is working")
         val results = CompressionResults()
+        LogUtil.log("aapt2Enabled ${variant.project.aapt2Enabled}")
         val filter = if (variant.project.aapt2Enabled) ::isFlatPngExceptRaw else ::isPngExceptRaw
-        Cwebp.get(variant)?.newCompressionTaskCreator()?.createCompressionTask(variant, results, "resources", {
-            variant.scope.mergedRes.search(filter)
-        }, variant.mergeResourcesTask)?.doLast {
+        Cwebp.get(variant)?.newCompressionTaskCreator()
+            ?.createCompressionTask(variant, results, "resources", {
+                var search = variant.scope.mergedRes.search(filter)
+                LogUtil.log("serarch: "+search.size)
+                search
+            }, variant.mergeResourcesTask)?.doLast {
             results.generateReport(variant, Build.ARTIFACT)
         }
     }

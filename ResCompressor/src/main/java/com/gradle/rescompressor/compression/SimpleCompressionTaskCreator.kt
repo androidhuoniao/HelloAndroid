@@ -7,6 +7,7 @@ import com.android.build.gradle.api.BaseVariant
 import com.gradle.rescompressor.command.CommandInstaller
 import com.gradle.rescompressor.compression.task.CompressImages
 import com.gradle.rescompressor.gradle.aapt2Enabled
+import com.gradle.rescompressor.utils.LogUtil
 import org.gradle.api.Task
 import java.io.File
 import kotlin.reflect.KClass
@@ -24,6 +25,7 @@ class SimpleCompressionTaskCreator(private val tool: CompressionTool, private va
         val aapt2 = variant.project.aapt2Enabled
         val install = getCommandInstaller(variant)
 
+        LogUtil.log("createCompressionTask is working aapt2: "+aapt2)
         return variant.project.tasks.create("compress${variant.name.capitalize()}${name.capitalize()}With${tool.command.name.substringBefore('.').capitalize()}", getCompressionTaskClass(aapt2).java) { task ->
             task.tool = tool
             task.variant = variant
@@ -33,6 +35,7 @@ class SimpleCompressionTaskCreator(private val tool: CompressionTool, private va
             }
         }.apply {
             dependsOn(install, deps)
+            LogUtil.log("createCompressionTask dependsOn ")
             variant.processResTask.dependsOn(this)
         }
     }
