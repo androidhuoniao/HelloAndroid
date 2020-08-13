@@ -24,4 +24,6 @@ dependencies {
     implementation gradleApi()
     implementation localGroovy()
     implementation 'com.android.tools.build:gradle:4.0.0'
+    implementation "com.didiglobal.booster:booster-gradle-plugin:$booster_version"
+    implementation "com.didiglobal.booster:booster-task-compression-cwebp:$booster_version"
 }

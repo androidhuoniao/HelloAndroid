@@ -1,10 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext.kotlin_version = "1.3.72"
+    ext.booster_version = '2.3.1'
     repositories {
         google()
         jcenter()
         mavenLocal()
+        maven { url 'https://oss.sonatype.org/content/repositories/public' }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.0"
@@ -13,6 +15,9 @@ buildscript {
 //        classpath 'com.smallsoho.mobcase:McImage:1.5.1'
         classpath 'com.smallsoho.mobcase:McImage:1.5.2'
         classpath 'com.gradle.rescompressor:ResCompressor:1.0.0'
+        classpath "com.didiglobal.booster:booster-gradle-plugin:$booster_version"
+        classpath "com.didiglobal.booster:booster-task-compression-cwebp:$booster_version"
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
