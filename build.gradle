@@ -13,10 +13,10 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
 //        classpath 'com.smallsoho.mobcase:McImage:1.5.1'
-        classpath 'com.smallsoho.mobcase:McImage:1.5.2'
+//        classpath 'com.smallsoho.mobcase:McImage:1.5.2'
         classpath 'com.gradle.rescompressor:ResCompressor:1.0.0'
-        classpath "com.didiglobal.booster:booster-gradle-plugin:$booster_version"
-        classpath "com.didiglobal.booster:booster-task-compression-cwebp:$booster_version"
+//        classpath "com.didiglobal.booster:booster-gradle-plugin:$booster_version"
+//        classpath "com.didiglobal.booster:booster-task-compression-cwebp:$booster_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

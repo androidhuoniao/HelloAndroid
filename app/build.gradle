@@ -5,6 +5,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'ResCompressor'
 
+ResCompressorConfig {
+    webp_quality=90
+    webp_path="111111111"
+}
+
 android {
     signingConfigs {
         release {
@@ -50,11 +55,6 @@ android {
             // that dimension.
             dimension "buildType"
         }
-//        full {
-//            dimension "version"
-//            applicationIdSuffix ".full"
-//            versionNameSuffix "-full"
-//        }
     }
 }
 

@@ -16,13 +16,17 @@ import org.gradle.api.Project
  */
 class CompressorPlugin : Plugin<Project> {
 
+    private lateinit var mConfig: CompressorConfig
+
     override fun apply(project: Project) {
         println("${project.name} ${this.javaClass.simpleName}.apply() is working")
+        createConfigExtension(project)
         when {
             project.plugins.hasPlugin("com.android.application") -> project.getAndroid<AppExtension>()
                 .let { android ->
                     project.afterEvaluate {
                         LogUtil.log("${project.name} afterEvaluate is working")
+                        getConfig(project)
                         var processor = CwebpCompressionVariantProcessor()
                         android.applicationVariants.forEach { variant ->
                             processor.process(variant)
@@ -41,4 +45,14 @@ class CompressorPlugin : Plugin<Project> {
                 }
         }
     }
+
+    fun createConfigExtension(project: Project) {
+        project.extensions.create(Constants.CONFIG_NAME, CompressorConfig::class.java)
+    }
+
+    fun getConfig(project: Project) {
+        mConfig = project.property(Constants.CONFIG_NAME) as CompressorConfig
+        LogUtil.log("$mConfig")
+    }
+
 }
