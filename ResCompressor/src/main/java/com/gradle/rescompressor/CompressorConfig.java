@@ -8,14 +8,14 @@ package com.gradle.rescompressor;
 public class CompressorConfig {
 
     public int webp_quality = 80;
-    public String webp_path = "";
+    public String compressToolsDir = "";
 
     public void webp_quality(int webp_quality) {
         this.webp_quality = webp_quality;
     }
 
-    public void webp_path(String webp_path) {
-        this.webp_path = webp_path;
+    public void compressToolsDir(String path) {
+        this.compressToolsDir = path;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class CompressorConfig {
         StringBuffer result = new StringBuffer();
         result.append("<<<<<<<<<<<<<<ResCompresssorConfig>>>>>>>>>>>>\n");
         result.append("webp_quality=" + webp_quality + " \n");
-        result.append("webp_path=" + webp_path + "\n");
+        result.append("compressToolsDir=" + compressToolsDir + "\n");
         result.append("<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>");
         return result.toString();
     }

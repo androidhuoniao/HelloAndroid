@@ -4,6 +4,7 @@ import com.android.build.gradle.AppExtension
 import com.android.build.gradle.LibraryExtension
 import com.gradle.rescompressor.gradle.getAndroid
 import com.gradle.rescompressor.task.compression.cwebp.CwebpCompressionVariantProcessor
+import com.gradle.rescompressor.test.TestUnits
 import com.gradle.rescompressor.utils.LogUtil
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -27,9 +28,10 @@ class CompressorPlugin : Plugin<Project> {
                     project.afterEvaluate {
                         LogUtil.log("${project.name} afterEvaluate is working")
                         getConfig(project)
+                        TestUnits.test()
                         var processor = CwebpCompressionVariantProcessor()
                         android.applicationVariants.forEach { variant ->
-                            processor.process(variant)
+                            processor.process(variant,mConfig)
                         }
                     }
                 }
@@ -39,7 +41,7 @@ class CompressorPlugin : Plugin<Project> {
                         LogUtil.log("${project.name} afterEvaluate is working")
                         var processor = CwebpCompressionVariantProcessor()
                         android.libraryVariants.forEach { variant ->
-                            processor.process(variant)
+                            processor.process(variant,mConfig)
                         }
                     }
                 }

@@ -2,6 +2,7 @@ package com.gradle.rescompressor.task.compression.cwebp
 
 import com.android.build.gradle.api.BaseVariant
 import com.gradle.rescompressor.Build
+import com.gradle.rescompressor.CompressorConfig
 import com.gradle.rescompressor.compression.CompressionResults
 import com.gradle.rescompressor.compression.generateReport
 import com.gradle.rescompressor.compression.isFlatPngExceptRaw
@@ -19,7 +20,7 @@ import com.gradle.rescompressor.utils.LogUtil
  */
 class CwebpCompressionVariantProcessor {
 
-    fun process(variant: BaseVariant) {
+    fun process(variant: BaseVariant,config: CompressorConfig) {
         LogUtil.log("${variant.project.name} ${variant.name} process is working")
         val results = CompressionResults()
         LogUtil.log("aapt2Enabled ${variant.project.aapt2Enabled}")

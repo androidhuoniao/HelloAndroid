@@ -6,8 +6,8 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'ResCompressor'
 
 ResCompressorConfig {
-    webp_quality=90
-    webp_path="111111111"
+    webp_quality 90
+    compressToolsDir "xxxxx"
 }
 
 android {

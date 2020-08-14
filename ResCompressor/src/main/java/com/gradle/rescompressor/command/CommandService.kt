@@ -32,6 +32,10 @@ class CommandService {
         }?.canonicalFile?.let {
             InstalledCommand(name, it)
         } ?: NoneCommand(name)
+
+        fun getCommandsSize():Int {
+           return commands.size
+        }
     }
 
 }
