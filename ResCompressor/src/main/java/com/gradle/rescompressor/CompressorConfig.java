@@ -9,6 +9,7 @@ public class CompressorConfig {
 
     public int webp_quality = 80;
     public String compressToolsDir = "";
+    public boolean logCwebpResult = true;
 
     public void webp_quality(int webp_quality) {
         this.webp_quality = webp_quality;
@@ -24,6 +25,7 @@ public class CompressorConfig {
         result.append("<<<<<<<<<<<<<<ResCompresssorConfig>>>>>>>>>>>>\n");
         result.append("webp_quality=" + webp_quality + " \n");
         result.append("compressToolsDir=" + compressToolsDir + "\n");
+        result.append("logCwebpResult=" + logCwebpResult + "\n");
         result.append("<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>");
         return result.toString();
     }

@@ -4,6 +4,7 @@ import com.android.SdkConstants
 import com.android.SdkConstants.FD_RES
 import com.android.builder.model.AndroidProject.FD_INTERMEDIATES
 import com.android.sdklib.BuildToolInfo
+import com.gradle.rescompressor.GlobalConfigHolder
 import com.gradle.rescompressor.aapt2.Aapt2Container
 import com.gradle.rescompressor.aapt2.metadata
 import com.gradle.rescompressor.compression.CompressionResult
@@ -83,7 +84,9 @@ internal open class CwebpCompressFlatImages : AbstractCwebpCompressImages() {
                 spec.isIgnoreExitValue = true
                 spec.commandLine = it.cmdline
             }
-            LogUtil.log("result: ${rc.exitValue} path: "+it.input.path)
+            if (GlobalConfigHolder.getConfig().logCwebpResult) {
+                LogUtil.log("result: ${rc.exitValue} path: "+it.input.path)
+            }
             when (rc.exitValue) {
                 0 -> {
                     val s1 = it.output.length()
