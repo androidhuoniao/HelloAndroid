@@ -24,8 +24,11 @@ class SimpleCompressionTaskCreator(private val tool: CompressionTool, private va
     override fun createCompressionTask(variant: BaseVariant, results: CompressionResults, name: String, supplier: () -> Collection<File>, vararg deps: Task): CompressImages<out CompressionOptions> {
         val aapt2 = variant.project.aapt2Enabled
         val install = getCommandInstaller(variant)
+        install.doLast {
+            LogUtil.log("${variant.name} CommandInstaller.doFirst is working")
+        }
 
-        LogUtil.log("createCompressionTask is working aapt2: "+aapt2)
+        LogUtil.log("${variant.name} createCompressionTask is working aapt2: "+aapt2)
         return variant.project.tasks.create("compress${variant.name.capitalize()}${name.capitalize()}With${tool.command.name.substringBefore('.').capitalize()}", getCompressionTaskClass(aapt2).java) { task ->
             task.tool = tool
             task.variant = variant
@@ -36,12 +39,22 @@ class SimpleCompressionTaskCreator(private val tool: CompressionTool, private va
             task.inputs.property("time",System.currentTimeMillis())
         }.apply {
             dependsOn(install, deps)
-            LogUtil.log("createCompressionTask dependsOn ")
+            if(deps.size > 0){
+                LogUtil.log("${variant.name} createCompressionTask deps: ${deps.get(0)}")
+                deps[0].doLast {
+                    LogUtil.log("${variant.name} $it.doLast is working")
+                }
+            }
+            LogUtil.log("${variant.name} createCompressionTask dependsOn ")
             variant.processResTask.dependsOn(this)
+            variant.processResTask.doFirst {
+                LogUtil.log("${variant.name} createCompressionTask processResTask.doFirst is working")
+            }
         }
     }
 
     private fun getCommandInstaller(variant: BaseVariant): Task {
+        LogUtil.log("${variant.name} getCommandInstaller")
         val name = "install${tool.command.name.substringBefore('.').capitalize()}"
         return variant.project.tasks.findByName(name) ?: variant.project.tasks.create(name, CommandInstaller::class.java) {
             it.command = tool.command

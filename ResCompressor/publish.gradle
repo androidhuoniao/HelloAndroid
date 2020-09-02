@@ -1,8 +1,9 @@
+
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-def DEBUG = true
-def VERSION = '1.0.0'
+def DEBUG = false
+def VERSION = '1.0.2'
 def GROUP = 'com.gradle.rescompressor'
 def ARTIFACT = 'ResCompressor'
 
@@ -21,6 +22,8 @@ uploadArchives {
             pom.groupId = GROUP
             pom.artifactId = ARTIFACT
             pom.version = VERSION
+
+            println("$rootProject.ext.mvnPwd")
 
             if (DEBUG) {
                 repository(url: mavenLocal().getUrl())

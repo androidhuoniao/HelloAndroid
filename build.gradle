@@ -5,8 +5,9 @@ buildscript {
     repositories {
         google()
         jcenter()
-        mavenLocal()
-        maven { url 'https://oss.sonatype.org/content/repositories/public' }
+//        mavenLocal()
+//        maven { url 'https://oss.sonatype.org/content/repositories/public' }
+        maven {url rootProject.ext.mvnRepository}
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.0"
@@ -14,7 +15,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
 //        classpath 'com.smallsoho.mobcase:McImage:1.5.1'
 //        classpath 'com.smallsoho.mobcase:McImage:1.5.2'
-        classpath 'com.gradle.rescompressor:ResCompressor:1.0.0'
+        classpath 'com.gradle.rescompressor:ResCompressor:1.0.2'
 //        classpath "com.didiglobal.booster:booster-gradle-plugin:$booster_version"
 //        classpath "com.didiglobal.booster:booster-task-compression-cwebp:$booster_version"
 
@@ -27,6 +28,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {url rootProject.ext.mvnRepository}
     }
 }
 

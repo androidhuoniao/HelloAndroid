@@ -2,6 +2,7 @@ package com.gradle.rescompressor.command
 
 import com.gradle.rescompressor.kotlinx.OS
 import com.gradle.rescompressor.kotlinx.file
+import com.gradle.rescompressor.utils.LogUtil
 import org.apache.commons.io.FileUtils
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.CacheableTask
@@ -28,7 +29,7 @@ open class CommandInstaller : DefaultTask() {
     @TaskAction
     fun install() {
         logger.info("Installing $command => $location")
-
+        LogUtil.log("Installing $command => $location")
         this.command.location.openStream().buffered().use { input ->
             FileUtils.copyInputStreamToFile(input, location)
             project.exec {

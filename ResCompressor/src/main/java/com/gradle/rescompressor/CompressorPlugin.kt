@@ -34,14 +34,19 @@ class CompressorPlugin : Plugin<Project> {
                         var processor = CwebpCompressionVariantProcessor()
                         android.applicationVariants.forEach { variant ->
                             processor.process(variant, mConfig)
-                            TestVariantScope.test(variant)
+//                            TestVariantScope.test(variant)
+                            project.tasks.findByName("preBuild")?.doLast {
+                                var task = project.tasks.findByName("compressStandard_Normal_ReleaseResourcesWithCwebp")
+                                LogUtil.log("$project.preBuild.doLast $task")
+                            }
                         }
+
                     }
                 }
             project.plugins.hasPlugin("com.android.library") -> project.getAndroid<LibraryExtension>()
                 .let { android ->
                     project.afterEvaluate {
-                        LogUtil.log("${project.name} afterEvaluate is working")
+                        LogUtil.log("${project.name} library afterEvaluate is working")
                         getConfig(project)
                         GlobalConfigHolder.setConfig(mConfig)
                         var processor = CwebpCompressionVariantProcessor()

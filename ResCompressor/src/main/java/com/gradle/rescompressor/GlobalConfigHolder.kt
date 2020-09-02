@@ -7,7 +7,7 @@ package com.gradle.rescompressor
  * Email: grassswwang@tencent.com
  */
 object GlobalConfigHolder {
-    lateinit var mConfig: CompressorConfig;
+    var mConfig: CompressorConfig = CompressorConfig();
     fun setConfig(config: CompressorConfig) {
         mConfig = config;
     }
@@ -15,4 +15,5 @@ object GlobalConfigHolder {
     fun getConfig(): CompressorConfig {
         return mConfig;
     }
+
 }

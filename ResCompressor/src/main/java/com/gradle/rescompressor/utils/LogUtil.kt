@@ -16,7 +16,7 @@ class LogUtil {
         }
 
         fun log(str: String) {
-            println(str)
+            println("ResCompressor---"+str)
         }
 
         fun log(exception: Exception) {

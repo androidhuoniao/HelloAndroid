@@ -79,6 +79,8 @@ internal open class CwebpCompressFlatImages : AbstractCwebpCompressImages() {
                     listOf(aapt2, "compile", "-o", it.first.parent, output.absolutePath))
         }.forEach {
             it.output.parentFile.mkdirs()
+            LogUtil.log("Aapt2ActionData: $it")
+            LogUtil.log("cwwebcommand: ${toListString(it.cmdline)}")
             val s0 = File(it.metadata.sourcePath).length()
             val rc = project.exec { spec ->
                 spec.isIgnoreExitValue = true
@@ -117,5 +119,12 @@ internal open class CwebpCompressFlatImages : AbstractCwebpCompressImages() {
         }
     }
 
+    fun toListString(list: List<String>):String {
+        var result = StringBuffer()
+        list.forEach {
+            result.append("$it ")
+        }
+        return result.toString()
+    }
 }
 
