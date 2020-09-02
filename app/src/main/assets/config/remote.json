@@ -1,0 +1,63 @@
+{
+	"version": "7",
+	"newsVersion": {
+		"message": "",
+		"url": "",
+		"version": "100"
+	},
+	"ret": "0",
+	"shareToWXCircleBySorC": 0,
+	"refreshPushState": 0,
+	"pushNotificationCount": 0,
+	"openUpLogs": 1,
+	"openSso": 3,
+	"openOriUrl": 0,
+	"openChlPush": 0,
+	"ticketState": 0,
+	"openBigFlow": 0,
+	"mustReport": 0,
+	"multiLine": 0,
+	"uploadPicKNumInGsm": 0,
+	"uploadPicKNumInWifi": 0,
+	"uploadPicSizeInGsm": 0,
+	"uploadPicSizeInWifi": 0,
+	"introWatermarkVer": 0.0,
+	"introFacesVer": 0.0,
+	"imageTracking": 0,
+	"watermarkVer": 0.0,
+	"highPriority": 0,
+	"enableUpPic": 0,
+	"deepClearSwitch": 0,
+	"closeSupport": 0,
+	"closePushLog": 0,
+	"cgiAccessQualityProbability": 0.0,
+	"barBackgroundType": 0,
+	"autoUpLogs": 0,
+	"userAppListSwitch": 1,
+	"enableReportClientOS": 1,
+	"viola": {
+		"version": "1.0.0",
+		"soList": [
+			{
+				"url": "https://s.inews.gtimg.com/inewsapp/kuaiBao_android/viola/5.0.86/libjsc.so",
+				"md5": "e88cda3dcdf5bafabea36dea092ef751",
+				"name": "libjsc"
+			},
+			{
+				"url": "https://s.inews.gtimg.com/inewsapp/kuaiBao_android/viola/5.0.86/libgnustl_shared.so",
+				"md5": "020ba77cabb402ab82e8c5e8b6a406da",
+				"name": "libgnustl_shared"
+			},
+			{
+				"url": "https://res.kuaibao.qq.com/resources/viola/6.2.15/libviola.so",
+				"md5": "f7aaddc8980bc9f9d2ff48693b30c10b",
+				"name": "libviola"
+			}
+		],
+		"mainJs": {
+			"url": "https://res.kuaibao.qq.com/resources/viola/6.3.15/Viola_1_0_5.js",
+			"md5": "a5d0c74de1892ab8ecbb3fe7ce7f2c67",
+			"name": "Viola_min_1_0_5"
+		}
+	}
+}
