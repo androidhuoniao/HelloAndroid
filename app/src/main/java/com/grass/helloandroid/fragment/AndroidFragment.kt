@@ -5,6 +5,7 @@ import com.airbnb.epoxy.EpoxyController
 import com.grass.helloandroid.FragmentActionConsts
 import com.grass.helloandroid.accountsync.AccountCreator
 import com.grass.helloandroid.animation.AnimationListFragment
+import com.grass.helloandroid.assets.AssetsDemo
 import com.grass.helloandroid.span.SpanActivity
 import com.grass.helloandroid.views.marquee
 import com.grass.helloandroid.views.previewItemView
@@ -61,6 +62,14 @@ class AndroidFragment : BaseEpoxyFragment() {
 //                var intent: Intent = Intent(activity, WebviewActivity::class.java)
 //                activity!!.startActivity(intent)
                 startNextActivity(WebviewActivity::class)
+            }
+        }
+
+        previewItemView {
+            id("assets")
+            title("assets demo")
+            clickListener { _ ->
+                AssetsDemo().test(activity)
             }
         }
     }
