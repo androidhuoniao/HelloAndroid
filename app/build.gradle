@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-
+apply plugin: 'com.hujiang.android-aspectjx'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -106,4 +106,5 @@ dependencies {
     androidTestImplementation 'com.amazonaws:aws-android-sdk-s3:2.6.31'
     androidTestImplementation "org.mockito:mockito-android:2.28.2"
     androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
+    implementation 'org.aspectj:aspectjrt:1.8.13'
 }
