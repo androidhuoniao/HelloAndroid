@@ -2,10 +2,8 @@ package com.grass.helloandroid.epic;
 
 import android.util.Log;
 
-import com.taobao.android.dexposed.DexposedBridge;
-import com.taobao.android.dexposed.XC_MethodHook;
-
-import dalvik.system.DexFile;
+import de.robv.android.xposed.DexposedBridge;
+import de.robv.android.xposed.XC_MethodHook;
 
 /**
  * Created by grassswwang
