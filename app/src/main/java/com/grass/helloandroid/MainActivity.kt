@@ -1,6 +1,7 @@
 package com.grass.helloandroid
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -19,6 +20,11 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         setContentView(R.layout.activity_main)
         bottomNavigation.setOnNavigationItemSelectedListener(this)
         savedInstanceState ?: showFragment(NotificationFragment())
+        for (i in 0..10) {
+            Thread(Runnable {
+                Log.i("epic", "onCreate: i: " + i)
+            }).start()
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
