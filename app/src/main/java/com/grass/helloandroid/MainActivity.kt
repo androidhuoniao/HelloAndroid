@@ -5,6 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.grass.helloandroid.aop.AopOnclick
 import com.grass.helloandroid.fragment.AndroidFragment
 import com.grass.helloandroid.fragment.KotlinFragment
 import com.grass.helloandroid.fragment.NotificationFragment
