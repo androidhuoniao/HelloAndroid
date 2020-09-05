@@ -108,6 +108,5 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-android:2.28.2"
     androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
     implementation 'org.aspectj:aspectjrt:1.8.13'
-    api 'me.weishu.exposed:exposed-xposedapi:0.4.5'
-    implementation "me.weishu:free_reflection:2.2.0"
+    implementation 'me.weishu:epic:0.8.2-SNAPSHOT'
 }
