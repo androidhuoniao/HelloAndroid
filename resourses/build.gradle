@@ -35,3 +35,20 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
 }
+
+afterEvaluate {
+    android.libraryVariants.all { variant ->
+        def variantName = variant.name
+        def variantNameCapitalize = variantName.capitalize()
+        def variantNameLowerCase = variantName.toLowerCase()
+        def buildType = variant.buildType.name
+        def flavor = variant.flavorName
+        //xxxx: buildType:debug flavor:rdm_Normal_ variantName:rdm_Normal_Debug variantNameCapitalize:Rdm_Normal_Debug
+        println "xxxx: buildType:" + buildType + " flavor:" + flavor + " variantName:" + variantName + " variantNameCapitalize:" + variantNameCapitalize + " variant:" + variant
+        def processDebugJavaResTask = tasks.findByName("processDebugJavaRes")
+        tasks.all{
+            println("task: "+it)
+        }
+
+    }
+}

@@ -110,3 +110,30 @@ dependencies {
     implementation 'org.aspectj:aspectjrt:1.8.13'
     implementation 'me.weishu:epic:0.8.2-SNAPSHOT'
 }
+afterEvaluate {
+    android.applicationVariants.all { variant ->
+        def variantName = variant.name
+        def variantNameCapitalize = variantName.capitalize()
+        def variantNameLowerCase = variantName.toLowerCase()
+        def buildType = variant.buildType.name
+        def flavor = variant.flavorName
+        //xxxx: buildType:debug flavor:rdm_Normal_ variantName:rdm_Normal_Debug variantNameCapitalize:Rdm_Normal_Debug
+        println "xxxx: buildType:" + buildType + " flavor:" + flavor + " variantName:" + variantName + " variantNameCapitalize:" + variantNameCapitalize + " variant:" + variant
+        //processStandard_DebugResources
+        def prepareBuildTask = tasks.findByName("process${variantNameCapitalize}Resources")
+        prepareBuildTask.outputs.upToDateWhen { false }
+        prepareBuildTask.doFirst {
+            println "task, do first" + variantNameLowerCase
+        }
+        prepareBuildTask.doLast {
+            println "task, do last" + variantNameLowerCase
+            prepareBuildTask.inputs.files.forEach({
+                println("inputs: "+it)
+            })
+            println("===================================")
+            prepareBuildTask.outputs.files.forEach{
+                println("outputs: "+it)
+            }
+        }
+    }
+}
