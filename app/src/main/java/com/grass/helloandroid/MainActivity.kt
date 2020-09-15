@@ -1,6 +1,9 @@
 package com.grass.helloandroid
 
+import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Trace
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -20,11 +23,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         setContentView(R.layout.activity_main)
         bottomNavigation.setOnNavigationItemSelectedListener(this)
         savedInstanceState ?: showFragment(NotificationFragment())
-        for (i in 0..10) {
-            Thread(Runnable {
-                Log.i("epic", "onCreate: i: " + i)
-            }).start()
-        }
+        Trace.beginSection("grass_test_group")
+        testGroup()
+        Trace.endSection()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -43,6 +44,10 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             .commit()
     }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+    }
+
 
     override fun showFragment(action: Int, fragment: Fragment) {
         when (action) {
@@ -55,5 +60,23 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                     .commit()
             }
         }
+    }
+
+    fun testGroup() {
+        test1()
+        test2()
+        test3()
+    }
+
+    fun test1() {
+        BitmapFactory.decodeResource(resources, R.drawable.drawable_shadow_popup_bg);
+    }
+
+    fun test2() {
+        Log.i("grass", "test2: is working")
+    }
+
+    fun test3() {
+        Log.i("grass", "test3: is working")
     }
 }
