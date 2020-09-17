@@ -109,6 +109,8 @@ dependencies {
     androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
     implementation 'org.aspectj:aspectjrt:1.8.13'
     implementation 'me.weishu:epic:0.8.2-SNAPSHOT'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 }
 afterEvaluate {
     android.applicationVariants.all { variant ->

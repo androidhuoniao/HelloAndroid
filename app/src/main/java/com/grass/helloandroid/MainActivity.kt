@@ -26,6 +26,10 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         Trace.beginSection("grass_test_group")
         testGroup()
         Trace.endSection()
+
+        var application = application
+        var applicationContext = applicationContext
+        Log.i("test", "onCreate: appliciaton: $application, applicationContext: $applicationContext")
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

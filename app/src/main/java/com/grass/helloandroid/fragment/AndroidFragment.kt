@@ -3,10 +3,13 @@ package com.grass.helloandroid.fragment
 import android.content.Intent
 import com.airbnb.epoxy.EpoxyController
 import com.grass.helloandroid.FragmentActionConsts
+import com.grass.helloandroid.TestMemoryLeakActivity
 import com.grass.helloandroid.accountsync.AccountCreator
 import com.grass.helloandroid.animation.AnimationListFragment
 import com.grass.helloandroid.assets.AssetsDemo
+import com.grass.helloandroid.looper.HelloLooper
 import com.grass.helloandroid.span.SpanActivity
+import com.grass.helloandroid.suanfa.SuanMain
 import com.grass.helloandroid.views.marquee
 import com.grass.helloandroid.views.previewItemView
 import com.grass.helloandroid.webview.WebviewActivity
@@ -70,6 +73,29 @@ class AndroidFragment : BaseEpoxyFragment() {
             title("assets demo")
             clickListener { _ ->
                 AssetsDemo().test(activity)
+            }
+        }
+
+        previewItemView {
+            id("looperDemo")
+            title("looper demo")
+            clickListener { _ ->
+                HelloLooper.startLooper(activity!!)
+            }
+        }
+        previewItemView {
+            id("suanfa")
+            title("SuanFa demo")
+            clickListener { _ ->
+                SuanMain.test()
+            }
+        }
+
+        previewItemView {
+            id("memoryLeakDemo")
+            title("memoryLeakDemo")
+            clickListener { _ ->
+                startNextActivity(TestMemoryLeakActivity::class)
             }
         }
     }
