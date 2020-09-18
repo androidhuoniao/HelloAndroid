@@ -36,7 +36,7 @@
         <activity android:name=".span.SpanActivity" />
         <activity android:name=".webview.WebviewActivity" />
         <activity android:name=".TestMemoryLeakActivity" />
-
+        <activity android:name=".TouchDemoActivity" />
 
 
         <!-- account sync keeplive-->

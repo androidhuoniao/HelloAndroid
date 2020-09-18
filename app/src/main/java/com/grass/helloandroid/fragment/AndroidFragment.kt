@@ -4,6 +4,7 @@ import android.content.Intent
 import com.airbnb.epoxy.EpoxyController
 import com.grass.helloandroid.FragmentActionConsts
 import com.grass.helloandroid.TestMemoryLeakActivity
+import com.grass.helloandroid.TouchDemoActivity
 import com.grass.helloandroid.accountsync.AccountCreator
 import com.grass.helloandroid.animation.AnimationListFragment
 import com.grass.helloandroid.assets.AssetsDemo
@@ -96,6 +97,14 @@ class AndroidFragment : BaseEpoxyFragment() {
             title("memoryLeakDemo")
             clickListener { _ ->
                 startNextActivity(TestMemoryLeakActivity::class)
+            }
+        }
+
+        previewItemView {
+            id("TouchEvent")
+            title("TouchEventDemo")
+            clickListener { _ ->
+                startNextActivity(TouchDemoActivity::class)
             }
         }
     }
