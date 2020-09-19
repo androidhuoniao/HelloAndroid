@@ -1,16 +1,14 @@
 package com.grass.helloandroid
 
-import android.app.KeyguardManager
-import android.content.Context
 import android.os.Bundle
-import android.os.PowerManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.grass.helloandroid.touchevent.TestGroupFlag
 import kotlinx.android.synthetic.main.activity_layout_touch_demo.*
 
 
@@ -19,6 +17,7 @@ class TouchDemoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_layout_touch_demo)
         listview.adapter = ListAdapter()
+        TestGroupFlag.test()
     }
 
     class ListAdapter() : BaseAdapter() {
@@ -46,7 +45,12 @@ class TouchDemoActivity : AppCompatActivity() {
             var resultView =
                 LayoutInflater.from(parent?.context).inflate(R.layout.list_item, parent, false)
             resultView.findViewById<TextView>(R.id.content_tv).setText(getItem(position).toString())
+            resultView.setOnClickListener {
+                Toast.makeText(parent?.context, getItem(position).toString(), Toast.LENGTH_SHORT).show()
+            }
             return resultView
         }
     }
+
+
 }

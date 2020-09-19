@@ -70,7 +70,7 @@ public class LogListView extends ListView {
                 break;
         }
         boolean superReturn = super.onTouchEvent(event);
-        Log.i(TAG, getClassName() + "[onTouchEvent] return super. = " + superReturn);
+        Log.d(TAG, getClassName() + "[onTouchEvent] return super. = " + superReturn);
         return superReturn;
     }
 
@@ -93,8 +93,14 @@ public class LogListView extends ListView {
                 break;
         }
         boolean superReturn = super.onInterceptTouchEvent(event);
-        Log.i(TAG, getClassName() + "[onInterceptTouchEvent] return super. = " + superReturn);
+        Log.d(TAG, getClassName() + "[onInterceptTouchEvent] return super. = " + superReturn);
         return superReturn;
+    }
+
+    @Override
+    public void requestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+        super.requestDisallowInterceptTouchEvent(disallowIntercept);
+        Log.d(TAG, getClassName() + "[requestDisallowInterceptTouchEvent]:disallowIntercept" + disallowIntercept);
     }
 
     public String getClassName() {

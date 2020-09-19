@@ -4,7 +4,11 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.ViewParent;
 import android.widget.LinearLayout;
+
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 /**
  * Created by grassswwang
@@ -70,7 +74,7 @@ public class LogLinearLayout extends LinearLayout {
                 break;
         }
         boolean superReturn = super.onTouchEvent(event);
-        Log.i(TAG, getClassName() + "[onTouchEvent] return super. = " + superReturn);
+        Log.d(TAG, getClassName() + "[onTouchEvent] return super. = " + superReturn);
         return superReturn;
     }
 
@@ -93,8 +97,15 @@ public class LogLinearLayout extends LinearLayout {
                 break;
         }
         boolean superReturn = super.onInterceptTouchEvent(event);
-        Log.i(TAG, getClassName() + "[onInterceptTouchEvent] return super. = " + superReturn);
+        Log.d(TAG, getClassName() + "[onInterceptTouchEvent] return super. = " + superReturn);
         return superReturn;
+    }
+
+    @Override
+    public void requestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+        super.requestDisallowInterceptTouchEvent(disallowIntercept);
+        Log.d(TAG, getClassName() + "[requestDisallowInterceptTouchEvent]:disallowIntercept" + disallowIntercept);
+        ViewPager2 pager = null;
     }
 
     public String getClassName() {

@@ -107,6 +107,14 @@ class AndroidFragment : BaseEpoxyFragment() {
                 startNextActivity(TouchDemoActivity::class)
             }
         }
+
+        previewItemView {
+            id("MeasureDemo")
+            title("MeasureDemo")
+            clickListener { _ ->
+                startNextActivity(TouchDemoActivity::class)
+            }
+        }
     }
 
     fun <T : Any> startNextActivity(clazz: KClass<T>) {
