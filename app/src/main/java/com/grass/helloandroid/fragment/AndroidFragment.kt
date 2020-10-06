@@ -9,6 +9,7 @@ import com.grass.helloandroid.accountsync.AccountCreator
 import com.grass.helloandroid.animation.AnimationListFragment
 import com.grass.helloandroid.assets.AssetsDemo
 import com.grass.helloandroid.looper.HelloLooper
+import com.grass.helloandroid.handler.HandlerDemo
 import com.grass.helloandroid.span.SpanActivity
 import com.grass.helloandroid.suanfa.SuanMain
 import com.grass.helloandroid.views.marquee
@@ -113,6 +114,14 @@ class AndroidFragment : BaseEpoxyFragment() {
             title("MeasureDemo")
             clickListener { _ ->
                 startNextActivity(TouchDemoActivity::class)
+            }
+        }
+
+        previewItemView {
+            id("handler")
+            title("handler demo")
+            clickListener { _ ->
+                HandlerDemo().test()
             }
         }
     }
