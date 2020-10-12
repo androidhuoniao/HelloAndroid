@@ -20,6 +20,9 @@ class TouchDemoActivity : AppCompatActivity() {
         TestGroupFlag.test()
     }
 
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+    }
     class ListAdapter() : BaseAdapter() {
         val data = mutableListOf<String>()
 

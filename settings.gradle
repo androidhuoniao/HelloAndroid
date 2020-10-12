@@ -1,3 +1,4 @@
+include ':miniapp'
 include ':resourses'
 include ':app',":McImage"
 rootProject.name = "HelloAndroid"
